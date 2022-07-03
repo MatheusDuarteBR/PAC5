@@ -2,28 +2,95 @@
     <head>
         <title>Sistema de Adoção - Login</title>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="/stylesheets/styleLogin.css">
     </head>
     <body>
-        <h2>Identifique-se</h2>
-        <form action="/login" method="post">
-            <table>
+        <header>
+            <img class="logo" src="/src/logo.png" alt="logo">
+            <a class="cta" href="/usuarioNovo"><button>Registro</button></a>
+        </header>
+        <centro><br><br><br><br><br><br><br><br>
+            <h2>Identifique-se</h2>
+            <form action="/login" method="post">
+                <table>
+                    <tr>
+                     <td>Usuário</td><br>
+                     <td><input type="text" name="edtUsuario"></td>
+                 </tr>
+                 <tr>
+                      <td>Senha</td><br>
+                      <td><input type="password" name="edtSenha"></td>
+                 </tr>
+                    <tr>
+                       <td colspan="2" style="text-align: center"><input type="submit" value="Entrar"></td>
+                 </tr>        
                 <tr>
-                    <td>Usuário</td>
-                    <td><input type="text" name="edtUsuario"></td>
-                </tr>
-                <tr>
-                    <td>Senha</td>
-                    <td><input type="password" name="edtSenha"></td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: center"><input type="submit" value="Entrar"></td>
-               </tr>        
-               <tr>
-                
-                <td><a href="/usuarioNovo">Cadastrar</a></td>
+                 <td> <a class="cta" href="/usuarioNovo"><button>Cadastrar</button></a></td>
+                 <td><a class="cta" href="/usuarioNovo">Cadastrar</a></td>
 
-              </tr>
-            </table>
-        </form>
+                </tr>
+             </table>
+         </form>
+    </centro>
+
+        <footer class="footer">
+            <div class="footer__addr">
+              <h1 class="footer__logo">Frada Joinville</h1>
+                <br>
+              <h3>Endereço:</h3>
+              
+              <address>
+                Estrada Blumenau - Vila Nova, Joinville - SC, 89237-820<br>
+                    
+                <a class="footer__btn" href="mailto:example@gmail.com">Mande-nos um e-mail</a>
+              </address>
+            </div>
+            
+            <ul class="footer__nav">
+              <li class="nav__item">
+                <h2 class="nav__title">Media</h2>
+          
+                <ul class="nav__ul">
+                  <li>
+                    <a href="#">Online</a>
+                  </li>
+    
+                </ul>
+              </li>
+              
+              <li class="nav__item nav__item--extra">
+                <h2 class="nav__title">Technology</h2>
+                
+                <ul class="nav__ul nav__ul--extra">
+                  
+                  <li>
+                    <a href="#">Software Design</a>
+                  </li>
+ 
+                  <li>
+                    <a href="#">Artificial Intelligence</a>
+                  </li>
+                  
+                  
+                </ul>
+              </li>
+              
+              <li class="nav__item">
+                <h2 class="nav__title">Legal</h2>
+                
+                <ul class="nav__ul">
+                  
+                  <li>
+                    <a href="#">Terms of Use</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            
+            <div class="legal">
+              <p>&copy; Todos direitos reservados 2022.</p>
+
+            </div>
+          </footer>
     </body>
 </html>
