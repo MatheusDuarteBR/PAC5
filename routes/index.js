@@ -124,6 +124,9 @@ router.get('/usuarioNovo', function(req, res){
   res.render('formCadastro', { title: "Crud de Usuario", usuario:{}, action: "/usuarioNovo" })
 })
 
+router.get('/petshop', function(req, res){
+  res.render('telaPrincipal', { title: "Frada joinville"})
+})
 
 router.post('/animalAltera/:id', async function(req, res) {
   const codigo = parseInt(req.params.id)
