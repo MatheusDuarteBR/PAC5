@@ -10,9 +10,8 @@
       <img class="logo" src="/src/logo.png" alt="logo">
       <a class="cta" href="/login"><button>Login</button></a>
   </header>
-    <h1><%= title %></h1>
 
-    <p>Preencha o Formulario para poder adotar um animal.</p><br>
+    <h1>Preencha o Formulario para poder adotar um animal.</h1><br>
     <form action="<%= action %>" method="POST">
       <table>
         <tr>
@@ -26,14 +25,14 @@
             </div>
             <div>
               <label for="telefone">Telefone:</label><br>
-              <input type="number" name="edtTelefone" value="<%= usuario.telefone %>" />
+              <input type="tel" id="tel" name="edtTelefone" value="<%= usuario.telefone %>" />
             </div>  
             <div>
               <label for="Cpf">Cpf:</label><br>
-              <input type="text" name="edtCpf" value="<%= usuario.cpf %>" />
+              <input type="number" max="11" name="edtCpf" value="<%= usuario.cpf %>" />
             </div>  
               <label for="Data de Nascimento">Data de Nascimento:</label><br>
-              <input type="text" name="edtNasc" value="<%= usuario.nasc %>" />
+              <input id="date" type="date" name="edtNasc" value="<%= usuario.nasc %>" />
             <div>
               <label for="senha">senha:</label><br>
               <input type="password" name="edtSenha" value="<%= usuario.senha %>" />
