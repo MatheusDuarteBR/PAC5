@@ -29,7 +29,7 @@ router.get('/', async function(req, res) {
 
 router.get('/sair', function(req, res){
   global.usuario = 0
-  res.redirect('/')
+  res.redirect('/login')
 })
 
 router.get('/login', function(req, res){
@@ -48,7 +48,7 @@ router.post('/login', async function(req, res){
   res.redirect('/')
 })
 
-router.get('/animalNovo', function(req, res, next){
+router.get('/animalNovo', function(req, res){
   //res.render('formAnimal', { title: "Cadastro de Animal", action: "/animalNovo" })
   res.render('formAnimal', { title: "Cadastro de Animal", registro:{}, action: "/animalNovo" })
 })
@@ -97,6 +97,31 @@ router.post('/animalNovo', async function(req, res) {
   {
     res.redirect('/?erro='+erro)
   }
+})
+
+router.post('/usuarioNovo', async function(req, res) {
+  console.log("Ação: ")
+  const nome       = req.body.edtNome 
+  const idade      = !req.body.edtIdade ? null : parseInt(req.body.edtIdade)
+  const telefone   = !req.body.edtTelefone ? null : parseInt(req.body.edtTelefone)
+  const cpf        = req.body.edtCpf
+  const nasc       = req.body.edtNasc
+  const senha      = req.body.edtSenha
+  const login    = req.body.edtLogin
+
+  try
+  {
+    await global.db.CadastroUsuario({nome, idade, telefone, cpf, nasc, senha, login})
+    res.redirect('/')
+  }
+  catch(erro)
+  {
+    res.redirect('/?erro='+erro)
+  }
+})
+
+router.get('/usuarioNovo', function(req, res){
+  res.render('formCadastro', { title: "Crud de Usuario", usuario:{}, action: "/usuarioNovo" })
 })
 
 

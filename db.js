@@ -84,10 +84,19 @@ async function buscarUsuario(us)
     return usuarioEcontrado && usuarioEcontrado.length>0 ? usuarioEcontrado[0] : {}
 }
 
+async function CadastroUsuario(usuario)
+{
+    const conn = await conectarBD()
+    console.log("Teste de cadastro de usuário..." + usuario.nome, usuario.idade, usuario.telefone, usuario.cpf, usuario.nasc, usuario.senha, usuario.login)
+    const sql = "insert into usuario (usunome, usuidade, usutelefone, usucpf, usunasc, ususenha, usulogin ) values (?,?,?,?,?,?,?);"
+    return await conn.query(sql,[usuario.nome, usuario.idade, usuario.telefone, usuario.cpf, usuario.nasc, usuario.senha, usuario.login])
+}
+
+
 
 conectarBD()
 
-module.exports = { listarAnimal , inserirAnimal, selecionarAnimal, alterarAnimal, apagarAnimal, buscarUsuario }
+module.exports = { listarAnimal , inserirAnimal, selecionarAnimal, alterarAnimal, apagarAnimal, buscarUsuario, CadastroUsuario }
 
 
 
