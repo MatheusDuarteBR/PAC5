@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CRUD de Animais</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>Listagem de Animais</h1>
+    <p>Animais já cadastrados no sistema.</p>
+    <p>Usuário logado: <%=usu%> | <a href="/sair">Sair</a></p>
+    <table style="width:50%">
+      <thead>
+        <tr style="background-color: #CCC">
+          <td style="width:20%">Nome</td>
+          <td style="width:20%">Idade</td>
+          <td style="width:20%">Cor</td>
+          <td style="width:20%">Raça</td>
+          <td>Ações</td>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% if(!registros || registros.length == 0) { %>
+        <tr>
+          <td colspan="4">Nenhum animal cadastrado.</td>
+        </tr>
+        <% } else { 
+          registros.forEach(function(animal){ %>
+            <tr>
+              <td style="width:20%"><%= animal.aninome %></td>
+              <td style="width:20%"><%= animal.aniidade %></td>
+              <td style="width:20%"><%= animal.anicor %></td>
+              <td style="width:20%"><%= animal.gencodigo %></td>
+              <td>
+                <a href="/animalAltera/<%= animal.anicodigo %>">Alterar</a> |
+                <a href="/animalApaga/<%= animal.anicodigo %>" onclick="return confirm('Confirma exclusão?');">Excluir</a>
+              </td>
+            </tr>
+        <% }) }%>
+
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <br><a href="/animalNovo">Cadastrar Novo</a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
+
+
