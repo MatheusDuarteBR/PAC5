@@ -16,8 +16,8 @@ router.get('/', async function(req, res) {
     }
 
     const registros = await global.db.listarAnimal()
-    const usu = global.usuariologin
-    res.render('index', { registros, usu })
+    const usu = global.usuarioemail
+    res.render('telaPrincipal', { registros, usu })
   }
   catch(error)
   {
@@ -26,26 +26,28 @@ router.get('/', async function(req, res) {
   
 })
 
-
-router.get('/sair', function(req, res){
-  global.usuario = 0
-  res.redirect('/login')
-})
-
 router.get('/login', function(req, res){
   res.render('login')
 })
 
 
 router.post('/login', async function(req, res){
-  const usuario = req.body.edtUsuario 
+  const usuario = req.body.edtEmail 
   const senha   = req.body.edtSenha
   
   const user = await global.db.buscarUsuario({usuario,senha})
 
   global.usuariocodigo = user.usucodigo
-  global.usuariologin  = user.usulogin
+  global.usuarioemail  = user.usuemail
   res.redirect('/')
+})
+
+router.get('/sair', function(req, res){
+
+  global.usuariocodigo = 0
+  global.usuarioemail  = 0
+
+  res.redirect('/login')
 })
 
 router.get('/animalNovo', function(req, res){
@@ -101,17 +103,28 @@ router.post('/animalNovo', async function(req, res) {
 
 router.post('/usuarioNovo', async function(req, res) {
   console.log("Ação: ")
-  const nome       = req.body.edtNome 
-  const idade      = !req.body.edtIdade ? null : parseInt(req.body.edtIdade)
-  const telefone   = !req.body.edtTelefone ? null : parseInt(req.body.edtTelefone)
-  const cpf        = req.body.edtCpf
-  const nasc       = req.body.edtNasc
-  const senha      = req.body.edtSenha
-  const login    = req.body.edtLogin
+  const nome           = req.body.edtNome 
+  const sobrenome      = req.body.edtSobrenome 
+  const sexo           = req.body.edtSexo  
+  const cpf            = req.body.edtCpf
+  const telefone       = req.body.edtTelefone
+  const celular        = req.body.edtCelular
+  const nasc           = req.body.edtNasc
+  const senha          = req.body.edtSenha
+  const email          = req.body.edtEmail
+  const idade          = !req.body.edtIdade ? null : parseInt(req.body.edtIdade)
+  const cep            = req.body.edtCep
+  const rua            = req.body.edtRua
+  const numero         = req.body.edtNumero
+  const complemento    = req.body.edtComplemento
+  const referencia     = req.body.edtReferencia
+  const bairro         = req.body.edtBairro
+  const cidade         = req.body.edtCidade
+  const estado         = req.body.edtEstado
 
   try
   {
-    await global.db.CadastroUsuario({nome, idade, telefone, cpf, nasc, senha, login})
+    await global.db.CadastroUsuario({nome,sobrenome, sexo, idade, telefone, celular, cpf, nasc, senha, email, cep, rua, numero, complemento, referencia, bairro, cidade, estado})
     res.redirect('/')
   }
   catch(erro)
@@ -121,7 +134,7 @@ router.post('/usuarioNovo', async function(req, res) {
 })
 
 router.get('/usuarioNovo', function(req, res){
-  res.render('formCadastro', { title: "Crud de Usuario", usuario:{}, action: "/usuarioNovo" })
+  res.render('formCadastro1', { title: "Crud de Usuario", usuario:{}, action: "/usuarioNovo" })
 })
 
 router.get('/petshop', function(req, res){
@@ -145,5 +158,7 @@ router.post('/animalAltera/:id', async function(req, res) {
     res.redirect('/?erro='+erro)
   }
 })
+
+var logado = false;
 
 module.exports = router;
