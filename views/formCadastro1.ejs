@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/styleLogin1.css">
+    <title>Sistema de Adoção - Login</title>
+  </head>
+  <div>
+    <header>
+      <img class="logo" src="/src/logo.png" alt="logo">
+      <a class="cta" href="/login"><button>Login</button></a>
+    </header>
+  </div>
+
+
+  <body>
+    <!-- Code -->
+    
+        <div class="conteiner">
+          <div class="row1">
+            <div>
+              <h1>Preencha o Formulario para poder adotar um animal.</h1><br>
+              <form action="<%= action %>" method="POST" class="row g-3 needs-validation" novalidate>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip01" class="form-label">Nome</label>
+                  <input type="text" name="edtNome" value="<%= usuario.nome %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip02" class="form-label">Sobrenome</label>
+                  <input type="text"  name="edtSobrenome" value="<%= usuario.sobrenome %>" class="form-control" id="validationTooltip02" value="Otto" required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip03" class="form-label">Sexo</label>
+                  <select class="form-select" name="edtSexo" value="<%= usuario.sexo %>" id="validationTooltip04" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option>Masculino</option>
+                    <option>Feminino</option>
+                    <option>Outro</option>
+                  </select>
+                  <div class="invalid-tooltip">
+                    Please select a valid state.
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip04" class="form-label">CPF</label>
+                  <input type="text" name="edtCpf" value="<%= usuario.cpf %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip05" class="form-label">Telefone</label>
+                  <input type="text" name="edtTelefone" value="<%= usuario.telefone %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip06" class="form-label">Celular</label>
+                  <input type="text" name="edtCelular" value="<%= usuario.celular %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip07" class="form-label">Data de Nascimento</label>
+                  <input type="text" name="edtNasc" value="<%= usuario.nasc %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip08" class="form-label">Idade</label>
+                  <input type="text" name="edtIdade" value="<%= usuario.idade %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="exampleInputEmail9" class="form-label">Email</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" value="<%= usuario.email %>" name="edtEmail" aria-describedby="emailHelp">
+                  <div id="emailHelp" class="form-text"></div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="exampleInputPassword1" class="form-label">Senha</label>
+                  <input type="password" class="form-control" value="<%= usuario.senha %>" name="edtSenha" id="exampleInputPassword1">
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip010" class="form-label">Cep</label>
+                  <input type="text" name="edtCep" value="<%= usuario.cep %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip011" class="form-label">Rua</label>
+                  <input type="text" name="edtRua" value="<%= usuario.rua%>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip012" class="form-label">Número</label>
+                  <input type="text" name="edtNumero" value="<%= usuario.numero %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip013" class="form-label">Complemento</label>
+                  <input type="text" name="edtComplemento" value="<%= usuario.complemento %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip014" class="form-label">Referencia</label>
+                  <input type="text" name="edtReferencia" value="<%= usuario.referencia %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip015" class="form-label">Bairro</label>
+                  <input type="text" name="edtBairro" value="<%= usuario.bairro %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip016" class="form-label">Cidade</label>
+                  <input type="text" name="edtCidade" value="<%= usuario.cidade %>" class="form-control" id="validationTooltip03" required>
+                  <div class="invalid-tooltip">
+                    Please provide a valid city.
+                  </div>
+                </div>
+                <div class="col-md-4 position-relative">
+                  <label for="validationTooltip017" class="form-label">Estado</label>
+                  <input type="text" name="edtEstado" value="<%= usuario.estado %>" class="form-control" id="validationTooltip01"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-12">
+                  <tr>
+                    <td><a href="/"> <button class="btn btn-primary"> Cancelar </button>  </a></td>
+                    <td><button type="submit" value="Salvar" class="btn btn-primary">Cadastrar</button></td>
+                  </tr>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    
+    <footer class="footer">
+      <div>
+        <div class="footer__addr">
+          <h1 class="footer__logo">Frada Joinville</h1>
+          <address>
+            Estrada Blumenau - Vila Nova, Joinville - SC, 89237-820<br>
+                
+            <a class="footer__btn" href="mailto:example@gmail.com">Mande-nos um e-mail</a>
+          </address>
+          <ul class="footer__nav">
+            <li class="nav__item">
+              <h2 class="nav__title">Media</h2>
+        
+              <ul class="nav__ul">
+                <li>
+                  <a href="#">Online</a>
+                </li>
+  
+              </ul>
+            </li>
+            
+            <li class="nav__item nav__item--extra">
+              <h2 class="nav__title">Technology</h2>
+              
+              <ul class="nav__ul nav__ul--extra">
+                
+                <li>
+                  <a href="#">Software Design</a>
+                </li>
+
+                <li>
+                  <a href="#">Artificial Intelligence</a>
+                </li>
+                
+                
+              </ul>
+            </li>
+            
+            <li class="nav__item">
+              <h2 class="nav__title">Legal</h2>
+              
+              <ul class="nav__ul">
+                
+                <li>
+                  <a href="#">Terms of Use</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+              <div class="legal">
+                 <p>&copy; Todos direitos reservados 2022.</p>
+
+              </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Code -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -18,7 +18,7 @@ async function conectarBD()
             port     : 3306, 
             user     : 'root',
             password : '', 
-            database : 'petshop' 
+            database : 'frada' 
         }); 
         
     console.log('Conectou no MySQL!'); 
@@ -79,17 +79,17 @@ async function apagarAnimal(codigo)
 async function buscarUsuario(us)
 {
     const conn = await conectarBD()
-    const sql = "select * from usuario where usulogin=? and ususenha=?;"
-    const [usuarioEcontrado] = await conn.query(sql,[us.usuario, us.senha])
+    const sql = "select * from usuario where usuemail=? and ususenha=?;"
+    const [usuarioEcontrado] = await conn.query(sql,[us.email, us.senha])
     return usuarioEcontrado && usuarioEcontrado.length>0 ? usuarioEcontrado[0] : {}
 }
 
 async function CadastroUsuario(usuario)
 {
     const conn = await conectarBD()
-    console.log("Teste de cadastro de usuário..." + usuario.nome, usuario.idade, usuario.telefone, usuario.cpf, usuario.nasc, usuario.senha, usuario.login)
-    const sql = "insert into usuario (usunome, usuidade, usutelefone, usucpf, usunasc, ususenha, usulogin ) values (?,?,?,?,?,?,?);"
-    return await conn.query(sql,[usuario.nome, usuario.idade, usuario.telefone, usuario.cpf, usuario.nasc, usuario.senha, usuario.login])
+    console.log("Teste de cadastro de usuário..." + usuario.nome, usuario.sobrenome, usuario.sexo, usuario.cpf, usuario.telefone, usuario.celular, usuario.nasc, usuario.senha, usuario.email, usuario.idade, usuario.cep, usuario.numero, usuario.complemento, usuario.referencia, usuario.bairro, usuario.cidade, usuario.estado)
+    const sql = "insert into usuario (usunome, ususobrenome, usosexo, usucpf, usutelefone, usucelular, usunasc, ususenha, usuemail, usuidade, endcep, endrua, endnumero, endcomplemento, endreferencia, endbairro, endcidade, endestado)  values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"
+    return await conn.query(sql,[usuario.nome, usuario.sobrenome, usuario.sexo, usuario.cpf, usuario.telefone, usuario.celular, usuario.nasc, usuario.senha, usuario.email, usuario.idade, usuario.cep, usuario.numero, usuario.complemento, usuario.referencia, usuario.bairro, usuario.cidade, usuario.estado])
 }
 
 
