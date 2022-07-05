@@ -6,7 +6,7 @@
 global.db = require('../db');  // <-------------------------------
 
 var app = require('../app');
-var debug = require('debug')('petshop:server');
+var debug = require('debug')('frada:server');
 var http = require('http');
 
 /**

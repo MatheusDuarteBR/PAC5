@@ -8,7 +8,7 @@ async function conectarBD()
     }
     
     /*
-    const connectionString = 'mysql://root:senha@localhost:3306/petshop' 
+    const connectionString = 'mysql://root:senha@localhost:3306/frada' 
     const connection= await mysql.createConnection(connectionString)
     */
     
@@ -32,7 +32,7 @@ async function conectarBD()
 async function listarAnimal()
 {
     const conn = await conectarBD()
-    const [registros] = await conn.query('SELECT * FROM animal;')
+    return await conn.query('select * from animal;')
     return registros
 }
 
@@ -86,10 +86,13 @@ async function buscarUsuario(us)
 
 async function CadastroUsuario(usuario)
 {
-    const conn = await conectarBD()
+    const conn = await conectarBD();
     console.log("Teste de cadastro de usuário..." + usuario.nome, usuario.sobrenome, usuario.sexo, usuario.cpf, usuario.telefone, usuario.celular, usuario.nasc, usuario.senha, usuario.email, usuario.idade, usuario.cep, usuario.numero, usuario.complemento, usuario.referencia, usuario.bairro, usuario.cidade, usuario.estado)
-    const sql = "insert into usuario (usunome, ususobrenome, usosexo, usucpf, usutelefone, usucelular, usunasc, ususenha, usuemail, usuidade, endcep, endrua, endnumero, endcomplemento, endreferencia, endbairro, endcidade, endestado)  values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"
-    return await conn.query(sql,[usuario.nome, usuario.sobrenome, usuario.sexo, usuario.cpf, usuario.telefone, usuario.celular, usuario.nasc, usuario.senha, usuario.email, usuario.idade, usuario.cep, usuario.numero, usuario.complemento, usuario.referencia, usuario.bairro, usuario.cidade, usuario.estado])
+    const sql = "insert into usuario (usunome, ususobrenome, usosexo, usucpf, usutelefone, usucelular, usunasc, ususenha, usuemail, usuidade, endcep, endrua, endnumero, endcomplemento, endreferencia, endbairro, endcidade, endestado) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"
+    return await conn.query(sql, [usuario.nome, usuario.sobrenome, usuario.sexo, usuario.cpf, usuario.telefone, usuario.celular, usuario.nasc, usuario.senha, usuario.email, usuario.idade, usuario.cep, usuario.rua,usuario.numero, usuario.complemento, usuario.referencia, usuario.bairro, usuario.cidade, usuario.estado]);
+    //console.log("Realizou inserção...")
+    //return resultado
+    //return await conn.query(sql,[usuario.nome, usuario.sobrenome, usuario.sexo, usuario.cpf, usuario.telefone, usuario.celular, usuario.nasc, usuario.senha, usuario.email, usuario.idade, usuario.cep, usuario.numero, usuario.complemento, usuario.referencia, usuario.bairro, usuario.cidade, usuario.estado])
 }
 
 
