@@ -23,21 +23,21 @@
             <div>
               <h1>Preencha o Formulario para poder adotar um animal.</h1><br>
               <form action="<%= action %>" method="POST" class="row g-3 needs-validation" novalidate>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip01" class="form-label">Nome</label>
                   <input type="text" name="edtNome" value="<%= usuario.nome %>" class="form-control" id="validationTooltip01"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip02" class="form-label">Sobrenome</label>
                   <input type="text"  name="edtSobrenome" value="<%= usuario.sobrenome %>" class="form-control" id="validationTooltip02" value="Otto" required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip03" class="form-label">Sexo</label>
-                  <select class="form-select" name="edtSexo" value="<%= usuario.sexo %>" id="validationTooltip04" required>
+                  <select class="form-select" name="edtSexo" value="<%= usuario.sexo %>" id="validationTooltip03" required>
                     <option selected disabled value="">Choose...</option>
                     <option>Masculino</option>
                     <option>Feminino</option>
@@ -47,91 +47,91 @@
                     Please select a valid state.
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip04" class="form-label">CPF</label>
-                  <input type="text" name="edtCpf" value="<%= usuario.cpf %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtCpf" value="<%= usuario.cpf %>" class="form-control" id="validationTooltip04"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip05" class="form-label">Telefone</label>
-                  <input type="text" name="edtTelefone" value="<%= usuario.telefone %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtTelefone" value="<%= usuario.telefone %>" class="form-control" id="validationTooltip05"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip06" class="form-label">Celular</label>
-                  <input type="text" name="edtCelular" value="<%= usuario.celular %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtCelular" value="<%= usuario.celular %>" class="form-control" id="validationTooltip06"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip07" class="form-label">Data de Nascimento</label>
-                  <input type="text" name="edtNasc" value="<%= usuario.nasc %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtNasc" value="<%= usuario.nasc %>" class="form-control" id="validationTooltip07"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip08" class="form-label">Idade</label>
-                  <input type="text" name="edtIdade" value="<%= usuario.idade %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="number" name="edtIdade" value="<%= usuario.idade %>" class="form-control" id="validationTooltip08"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="exampleInputEmail9" class="form-label">Email</label>
                   <input type="text" class="form-control" id="exampleInputEmail1" value="<%= usuario.email %>" name="edtEmail" aria-describedby="emailHelp">
                   <div id="emailHelp" class="form-text"></div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="exampleInputPassword1" class="form-label">Senha</label>
                   <input type="password" class="form-control" value="<%= usuario.senha %>" name="edtSenha" id="exampleInputPassword1">
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip010" class="form-label">Cep</label>
-                  <input type="text" name="edtCep" value="<%= usuario.cep %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtCep" value="<%= usuario.cep %>" class="form-control" id="validationTooltip09"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip011" class="form-label">Rua</label>
-                  <input type="text" name="edtRua" value="<%= usuario.rua%>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtRua" value="<%= usuario.rua%>" class="form-control" id="validationTooltip10"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip012" class="form-label">Número</label>
-                  <input type="text" name="edtNumero" value="<%= usuario.numero %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtNumero" value="<%= usuario.numero %>" class="form-control" id="validationTooltip11"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip013" class="form-label">Complemento</label>
-                  <input type="text" name="edtComplemento" value="<%= usuario.complemento %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtComplemento" value="<%= usuario.complemento %>" class="form-control" id="validationTooltip12"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip014" class="form-label">Referencia</label>
-                  <input type="text" name="edtReferencia" value="<%= usuario.referencia %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtReferencia" value="<%= usuario.referencia %>" class="form-control" id="validationTooltip013"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip015" class="form-label">Bairro</label>
-                  <input type="text" name="edtBairro" value="<%= usuario.bairro %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtBairro" value="<%= usuario.bairro %>" class="form-control" id="validationTooltip014"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip016" class="form-label">Cidade</label>
-                  <input type="text" name="edtCidade" value="<%= usuario.cidade %>" class="form-control" id="validationTooltip03" required>
+                  <input type="text" name="edtCidade" value="<%= usuario.cidade %>" class="form-control" id="validationTooltip015" required>
                   <div class="invalid-tooltip">
                     Please provide a valid city.
                   </div>
                 </div>
-                <div class="col-md-4 position-relative">
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip017" class="form-label">Estado</label>
-                  <input type="text" name="edtEstado" value="<%= usuario.estado %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtEstado" value="<%= usuario.estado %>" class="form-control" id="validationTooltip016"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>

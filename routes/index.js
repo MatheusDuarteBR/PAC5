@@ -8,21 +8,17 @@ var router = express.Router()
 })*/
 
 router.get('/', async function(req, res) {
-  try
-  {
+
+  
     if (!global.usuariocodigo || global.usuariocodigo == 0)
     {
       res.redirect('/login')
     }
-
+    console.log("listando animal")
     const registros = await global.db.listarAnimal()
     const usu = global.usuarioemail
+  
     res.render('telaPrincipal', { registros, usu })
-  }
-  catch(error)
-  {
-    res.redirect('/?erro='+error);
-  }
   
 })
 
@@ -32,13 +28,13 @@ router.get('/login', function(req, res){
 
 
 router.post('/login', async function(req, res){
-  const usuario = req.body.edtEmail 
+  const email = req.body.edtEmail 
   const senha   = req.body.edtSenha
   
-  const user = await global.db.buscarUsuario({usuario,senha})
-
+  const user = await global.db.buscarUsuario({email,senha})
+  console.log("Login global.. " + user.usucodigo + "Email:" + user.usuemail)
   global.usuariocodigo = user.usucodigo
-  global.usuarioemail  = user.usuemail
+  global.usuarioEmail  = user.usuemail
   res.redirect('/')
 })
 
@@ -102,6 +98,7 @@ router.post('/animalNovo', async function(req, res) {
 })
 
 router.post('/usuarioNovo', async function(req, res) {
+
   console.log("Ação: ")
   const nome           = req.body.edtNome 
   const sobrenome      = req.body.edtSobrenome 
@@ -124,7 +121,8 @@ router.post('/usuarioNovo', async function(req, res) {
 
   try
   {
-    await global.db.CadastroUsuario({nome,sobrenome, sexo, idade, telefone, celular, cpf, nasc, senha, email, cep, rua, numero, complemento, referencia, bairro, cidade, estado})
+    await global.db.CadastroUsuario({nome, sobrenome, sexo, cpf,telefone, celular,  nasc, senha, email, idade, cep, rua, numero, complemento, referencia, bairro, cidade, estado})
+    console.log("Finalizou insert...")
     res.redirect('/')
   }
   catch(erro)
@@ -137,7 +135,7 @@ router.get('/usuarioNovo', function(req, res){
   res.render('formCadastro1', { title: "Crud de Usuario", usuario:{}, action: "/usuarioNovo" })
 })
 
-router.get('/petshop', function(req, res){
+router.get('/frada', function(req, res){
   res.render('telaPrincipal', { title: "Frada joinville"})
 })
 
