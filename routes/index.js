@@ -7,18 +7,17 @@ var router = express.Router()
   res.render('index');
 })*/
 
-router.get('/', async function(req, res) {
+router.get('/listaDeAnimal', async function(req, res) {
 
   
     if (!global.usuariocodigo || global.usuariocodigo == 0)
     {
       res.redirect('/login')
     }
-    console.log("listando animal")
     const registros = await global.db.listarAnimal()
-    const usu = global.usuarioemail
+    const usu = global.usuariofuncionario
   
-    res.render('telaPrincipal', { registros, usu })
+    res.render('listaAnimal', { registros, usu })
   
 })
 
@@ -28,20 +27,20 @@ router.get('/login', function(req, res){
 
 
 router.post('/login', async function(req, res){
-  const email = req.body.edtEmail 
-  const senha   = req.body.edtSenha
+  const funcionario = req.body.edtFuncionario
+  const senha       = req.body.edtFuncionarioSenha
   
-  const user = await global.db.buscarUsuario({email,senha})
-  console.log("Login global.. " + user.usucodigo + "Email:" + user.usuemail)
-  global.usuariocodigo = user.usucodigo
-  global.usuarioEmail  = user.usuemail
-  res.redirect('/')
+  const user = await global.db.buscarUsuario({funcionario,senha})
+  console.log("Login global.. " + user.usucodigo + "Funcionario:" + user.funcionario)
+  global.usuariocodigo       = user.usucodigo
+  global.usuariofuncionario  = user.usuariofuncionario
+  res.redirect('/listaDeAnimal')
 })
 
 router.get('/sair', function(req, res){
 
-  global.usuariocodigo = 0
-  global.usuarioemail  = 0
+  global.usuariocodigo       = 0
+  global.usuariofuncionario  = 0
 
   res.redirect('/login')
 })
@@ -107,7 +106,6 @@ router.post('/usuarioNovo', async function(req, res) {
   const telefone       = req.body.edtTelefone
   const celular        = req.body.edtCelular
   const nasc           = req.body.edtNasc
-  const senha          = req.body.edtSenha
   const email          = req.body.edtEmail
   const idade          = !req.body.edtIdade ? null : parseInt(req.body.edtIdade)
   const cep            = req.body.edtCep
@@ -121,8 +119,7 @@ router.post('/usuarioNovo', async function(req, res) {
 
   try
   {
-    await global.db.CadastroUsuario({nome, sobrenome, sexo, cpf,telefone, celular,  nasc, senha, email, idade, cep, rua, numero, complemento, referencia, bairro, cidade, estado})
-    console.log("Finalizou insert...")
+    await global.db.CadastroUsuario({nome, sobrenome, sexo, cpf, telefone, celular, nasc, email, idade, cep, rua, numero, complemento, referencia, bairro, cidade, estado})
     res.redirect('/')
   }
   catch(erro)
@@ -135,7 +132,7 @@ router.get('/usuarioNovo', function(req, res){
   res.render('formCadastro1', { title: "Crud de Usuario", usuario:{}, action: "/usuarioNovo" })
 })
 
-router.get('/frada', function(req, res){
+router.get('/', function(req, res){
   res.render('telaPrincipal', { title: "Frada joinville"})
 })
 
@@ -156,7 +153,5 @@ router.post('/animalAltera/:id', async function(req, res) {
     res.redirect('/?erro='+erro)
   }
 })
-
-var logado = false;
 
 module.exports = router;

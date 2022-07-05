@@ -32,7 +32,7 @@ async function conectarBD()
 async function listarAnimal()
 {
     const conn = await conectarBD()
-    return await conn.query('select * from animal;')
+    const [registros] = await conn.query('SELECT * FROM animal;')
     return registros
 }
 
@@ -79,17 +79,17 @@ async function apagarAnimal(codigo)
 async function buscarUsuario(us)
 {
     const conn = await conectarBD()
-    const sql = "select * from usuario where usuemail=? and ususenha=?;"
-    const [usuarioEcontrado] = await conn.query(sql,[us.email, us.senha])
+    const sql = "select * from usuarioFuncionario where usuFuncionario=? and ususenha=?;"
+    const [usuarioEcontrado] = await conn.query(sql,[us.funcionario, us.senha])
     return usuarioEcontrado && usuarioEcontrado.length>0 ? usuarioEcontrado[0] : {}
 }
 
 async function CadastroUsuario(usuario)
 {
     const conn = await conectarBD();
-    console.log("Teste de cadastro de usuário..." + usuario.nome, usuario.sobrenome, usuario.sexo, usuario.cpf, usuario.telefone, usuario.celular, usuario.nasc, usuario.senha, usuario.email, usuario.idade, usuario.cep, usuario.numero, usuario.complemento, usuario.referencia, usuario.bairro, usuario.cidade, usuario.estado)
-    const sql = "insert into usuario (usunome, ususobrenome, usosexo, usucpf, usutelefone, usucelular, usunasc, ususenha, usuemail, usuidade, endcep, endrua, endnumero, endcomplemento, endreferencia, endbairro, endcidade, endestado) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"
-    return await conn.query(sql, [usuario.nome, usuario.sobrenome, usuario.sexo, usuario.cpf, usuario.telefone, usuario.celular, usuario.nasc, usuario.senha, usuario.email, usuario.idade, usuario.cep, usuario.rua,usuario.numero, usuario.complemento, usuario.referencia, usuario.bairro, usuario.cidade, usuario.estado]);
+    console.log("Teste de cadastro de usuário..." + usuario.nome, usuario.sobrenome, usuario.sexo, usuario.cpf, usuario.telefone, usuario.celular, usuario.nasc, usuario.email, usuario.idade, usuario.cep, usuario.numero, usuario.complemento, usuario.referencia, usuario.bairro, usuario.cidade, usuario.estado)
+    const sql = "insert into usuario (usunome, ususobrenome, usosexo, usucpf, usutelefone, usucelular, usunasc, usuemail, usuidade, endcep, endrua, endnumero, endcomplemento, endreferencia, endbairro, endcidade, endestado) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);"
+    return await conn.query(sql, [usuario.nome, usuario.sobrenome, usuario.sexo, usuario.cpf, usuario.telefone, usuario.celular, usuario.nasc, usuario.email, usuario.idade, usuario.cep, usuario.rua,usuario.numero, usuario.complemento, usuario.referencia, usuario.bairro, usuario.cidade, usuario.estado]);
     //console.log("Realizou inserção...")
     //return resultado
     //return await conn.query(sql,[usuario.nome, usuario.sobrenome, usuario.sexo, usuario.cpf, usuario.telefone, usuario.celular, usuario.nasc, usuario.senha, usuario.email, usuario.idade, usuario.cep, usuario.numero, usuario.complemento, usuario.referencia, usuario.bairro, usuario.cidade, usuario.estado])
