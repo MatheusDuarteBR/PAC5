@@ -40,8 +40,9 @@ async function listarAnimal()
 async function inserirAnimal(animal)
 {
     const conn = await conectarBD()
-    const sql = "insert into animal (aninome, aniidade, anicor, gencodigo) values (?,?,?,?);"
-    return await conn.query(sql,[animal.nome, animal.idade, animal.cor, animal.genero])
+    console.log("passou  aqui" +animal.nome, animal.idade, animal.cor, animal.genero, animal.descricao)
+    const sql = "insert into animal (aninome, aniidade, anicor, gencodigo, anidescricao) values (?,?,?,?,?);"
+    return await conn.query(sql,[animal.nome, animal.idade, animal.cor, animal.genero, animal.descricao])
 }
 
 
