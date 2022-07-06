@@ -1,5 +1,7 @@
 var express = require('express')
 var router = express.Router()
+const multer = require('multer')
+const multerConfig = require("./config/multer");
 
 /* GET home page. */
 
@@ -153,5 +155,13 @@ router.post('/animalAltera/:id', async function(req, res) {
     res.redirect('/?erro='+erro)
   }
 })
+
+
+
+router.post("/posts", multer(multerConfig).single("file"), async (req, res) => {
+
+  return res.json({});
+});
+
 
 module.exports = router;

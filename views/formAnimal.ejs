@@ -10,8 +10,9 @@
   <body>
     <h1><%= title %></h1>
     <p>Preencha os dados abaixo e clique em Salvar o novo animal.</p>
-    <form action="<%= action %>" method="POST">
+    <form action="<%= action %>" method="POST" enctype="multipart/form-data">
       <table>
+        <input type="file" name="file" />
         <tr>
           <td>Nome</td>
           <td><input type="text" name="edtNome" value="<%= registro.aninome %>" /></td>
