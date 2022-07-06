@@ -91,59 +91,54 @@
       <div id="centro" class="card align-self-center">
         <div id="rowCard" class="row">
           <div class="col-3">
-            <div id="containerPesquisa" class="container">
-              <div class="form-group">
-                <label for="search" class="form-label">Procurar animal:</label>
-                <span class="input-group">
-                  <input id="search" type="search" class="form-control" placeholder="Cachorros..." aria-label="Search" aria-describedby="search-addon" />
-                  <span class="input-group-text border-0" id="search-addon">
-                    <!-- <i class="fas fa-search"></i> -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                    </svg>
-                  </span>
-                </span>
-              </div>
-            </div>
           </div>
           <div class="col-6">
-            <div class="row">
-              <div id="cardAnimalBody" class="card-body align-self-center">
-                <div id="cardAnimal" class="card align-self-center">
-                <!-- <div class="card align-self-center"> -->
-                  <div class="card-body">
-                    <div id="cardFotoAnimal" class="card align-self-center">
-                      <!-- <div class="card align-self-center"> -->
-                        <div class="card-body">
-                          <img class="rounded mx-auto d-block" id="foto" src="src/cat.png">
-                        </div>
-                      </div>
-                  </div>
+            <form class="row g-3">
+              <div class="col-md-6">
+                <label for="validationTooltip01" class="form-label">Nome</label>
+                  <input type="text" name="edtNome" value="<%= usuario.nome %>" class="form-control" id="validationTooltip01"  required>
+              </div>
+              <div class="col-md-6">
+                <label for="validationTooltip02" class="form-label">Sobrenome</label>
+                  <input type="text"  name="edtSobrenome" value="<%= usuario.sobrenome %>" class="form-control" id="validationTooltip02" value="" required>
+              </div>
+              <div class="col-12">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+              </div>
+              <div class="col-12">
+                <label for="inputAddress2" class="form-label">Address 2</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+              </div>
+              <div class="col-md-6">
+                <label for="inputCity" class="form-label">City</label>
+                <input type="text" class="form-control" id="inputCity">
+              </div>
+              <div class="col-md-4">
+                <label for="inputState" class="form-label">State</label>
+                <select id="inputState" class="form-select">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <label for="inputZip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="inputZip">
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck">
+                  <label class="form-check-label" for="gridCheck">
+                    Check me out
+                  </label>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="d-flex justify-content-around">
-                <a id="cancela" href="#">
-                <!-- <div class="col"> -->
-                  <!-- <i class="bi bi-x-lg"></i> -->
-                  <svg id="x" xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                  </svg>
-                </a>
-              <!-- </div> -->
-              <!-- <div class="col"> -->
-                <!-- <i class="bi bi-heart-fill"></i> -->
-                <a id="gostei" href="#">
-                  <svg id="heart" xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                  </svg>
-                </a>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary">Sign in</button>
               </div>
-            </div>
+            </form>
           </div>
           <div class="col-3">
-            <h3 id="infos">Infos:</h3>
           </div>
         </div>
         

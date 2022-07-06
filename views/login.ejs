@@ -92,17 +92,18 @@
     <header class="navbar navbar-dark bd-navbar">
         <nav class="container"><img class="logo" src="/src/logo.png" alt="logo">
           <div class="offcanvas-lg offcanvas-end flex-grow-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
-            
-      
           </div>
         </nav>
     </header>
     <div class="container">
-      <!-- <div id="centro" class="card align-self-center"> -->
-      <div id="centro" class="card position-absolute top-50 start-50 translate-middle">
-        <div id="rowCard" class="row">
-            <h2 id="id">Identifique-se</h2>
-            <form action="/login" method="post">
+      <div class="row">
+        <div class="col-4">
+          <!-- <div id="centro" class="card align-self-center"> -->
+          <!-- <div id="centro" class="card position-absolute top-50 start-50 translate-middle"> -->
+          <div id="centro" class="card">
+            <div id="rowCard" class="row">
+              <h2 id="id">Identifique-se</h2>
+              <form action="/login" method="post">
                 <div id="usu" class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Usuario</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" name="edtEmail" aria-describedby="emailHelp">
@@ -114,55 +115,54 @@
                 </div>
                 <button id="entrar" type="submit" class="btn btn-primary" value="Entrar" ><a>Entrar</button></a></button>
                 <button id="cadastrar" type="submit" class="btn btn-primary" value="Entrar" ><a style="color: white;text-decoration: none;" href="/usuarioNovo">Cadastrar</a></button>
-            </form>
-          <!-- <div class="col-3">
-
+              </form>
+            </div>
           </div>
-          <div class="col-6">
-            
-          </div>
-          <div class="col-3">
-              
-          </div> -->
         </div>
-      </div>
-      <footer id="rodape" class="footer fixed-bottom">
-        <div class="card align-self-center">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-9">
-                <div class="footer__addr">
-                  
-                  <h3 class="footer__logo">Frada Joinville</h3>
-                    <!-- <br> -->
-                  <h5>Endereço:</h5>
-                  <address>
-                    Estrada Blumenau - Vila Nova, Joinville - SC, 89237-820<br>
-                    <a class="footer__btn" href="mailto:example@gmail.com">Mande-nos um e-mail</a>
-                  </address>
-                </div>
-              </div>
-              <div class="col">
-                <div class="float-end">
-                  <ul class="footer__nav">
-                    <li class="nav__item">
-                      <h5 class="nav__title">Legal</h5>
-                      <ul class="nav__ul">
-                        <li>
-                          <a href="#">Terms of Use</a>
+        <div class="col-8">
+          <!-- <footer id="rodape" class="footer fixed-bottom"> -->
+          <!-- <div id="rodape" class="footer"> -->
+            <div class="card align-self-center">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-9">
+                    <div class="footer__addr">
+                      <h3 class="footer__logo">Frada Joinville</h3>
+                        <!-- <br> -->
+                      <h5>Endereço:</h5>
+                      <address>
+                        Estrada Blumenau - Vila Nova, Joinville - SC, 89237-820<br>
+                        <a class="footer__btn" href="mailto:example@gmail.com">Mande-nos um e-mail</a>
+                      </address>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="float-end">
+                      <ul class="footer__nav">
+                        <li class="nav__item">
+                          <h5 class="nav__title">Legal</h5>
+                          <ul class="nav__ul">
+                            <li>
+                              <a href="#">Terms of Use</a>
+                            </li>
+                          </ul>
                         </li>
                       </ul>
-                    </li>
-                  </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="legal">
+                  <p style="margin-bottom:0px;">&copy; Todos direitos reservados 2022.</p>
                 </div>
               </div>
             </div>
-            <div class="legal">
-              <p style="margin-bottom:0px;">&copy; Todos direitos reservados 2022.</p>
-            </div>
-          </div>
+          <!-- </footer> -->
+          <!-- </div> -->
         </div>
-      </footer>
+        
+      </div>
+      
+      
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </body>
