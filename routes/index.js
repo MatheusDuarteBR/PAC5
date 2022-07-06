@@ -82,14 +82,17 @@ router.get('/animalAltera/:id', async function(req,res){
 
 
 router.post('/animalNovo', async function(req, res) {
-  const nome = req.body.edtNome 
+  const aninome = req.body.edtAninome
   const idade = !req.body.edtIdade ? null : parseInt(req.body.edtIdade)
   const cor    = req.body.edtCor 
   const genero = !req.body.cmbGenero ? null : parseInt(req.body.cmbGenero)
+  const descricao    = req.body.edtDescricao
+  
+  console.log("passou  aqui")
 
   try
   {
-    await global.db.inserirAnimal({nome, idade, cor, genero})
+    await global.db.inserirAnimal({aninome, idade, cor, genero, descricao})
     res.redirect('/')
   }
   catch(erro)
@@ -156,12 +159,14 @@ router.post('/animalAltera/:id', async function(req, res) {
   }
 })
 
-
-
 router.post("/posts", multer(multerConfig).single("file"), async (req, res) => {
 
-  return res.json({});
-});
+  return res.json(res.render('telaPrincipal', { title: "Frada joinville"}));
 
+})
+
+router.get('/posts', function(req, res){
+  res.render('foto', { title: "Frada joinville"})
+})
 
 module.exports = router;
