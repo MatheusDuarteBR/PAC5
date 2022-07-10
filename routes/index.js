@@ -162,13 +162,15 @@ router.post('/animalAltera/:id', async function(req, res) {
   }
 })
 
-
-
 router.post("/posts", multer(multerConfig).single("file"), async (req, res) => {
 
-  return res.json({});
-});
+  return res.json(res.render('telaPrincipal', { title: "Frada joinville"}));
 
+})
+
+router.get('/posts', function(req, res){
+  res.render('foto', { title: "Frada joinville"})
+})
 
 
 router.get('/funcionarioNovo', function(req, res){
