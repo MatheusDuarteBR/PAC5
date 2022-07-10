@@ -9,13 +9,13 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Preencha os dados abaixo e clique em Salvar o novo animal.</p>  
+    <p>Preencha os dados abaixo e clique em Salvar o novo animal.</p>
   <div>
-    <form action="<%= action %>" method="POST">
+    <form action="<%= action %>" method="POST" enctype="multipart/form-data" >
       <table>
         <tr>
           <td>Nome</td>
-          <td><input type="text" name="edtAnimalNome" value="<%= registro.aninome %>" /></td>
+          <td><input type="text" name="edtNomeAnimal" value="<%= registro.aninome %>" /></td>
         </tr>
         <tr>
           <td>Idade</td>
@@ -33,15 +33,19 @@
                 <option value="3" <% if(registro.gencodigo == 3) { %> selected <% } %> >Cavalo</option>
                 <option value="4" <% if(registro.gencodigo == 4) { %> selected <% } %> >Papagaio</option>
                 </select></td>
-        </tr>
-        <tr>
-          <td>Descrição do animal</td>
-          <td><input type="text" name="edtDescricao" value="<%= registro.anidescricao %>" /></td>
-        </tr>
-        <input  type="file" name="file" /> 
-        <tr>
-          <td><a href="/">Cancelar <button  name="file"  type="submit" value="Salvar" class="btn btn-primary">Save</button>   </a></td>
-        </tr>
+            </tr>
+            <td>Foto do animal</td>
+            <td><input type="file"  name="edtImagem" value="<%= registro.aniimagem %>"  /></td>
+          </tr>
+          <tr>
+            <td>Descrição do animal </td>
+            <td><input type="text" name="edtDescricao" value="<%= registro.anidescricao %>" /></td>
+          </tr>
+          <tr>
+            <tr>
+              <button id="Cancelar" type="submit" class="btn btn-primary" value="Cancelar" ><a style="color: white;text-decoration: none;" href="/listaDeAnimal">Cancelar</a></button>
+              <button id="Salvar" type="submit" class="btn btn-primary" value="Salvar" ><a>Salvar</button></a></button>
+            </tr>
       </table>
         
         
