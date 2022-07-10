@@ -10,7 +10,7 @@
   <div>
     <header>
       <img class="logo" src="/src/logo.png" alt="logo">
-      <a class="cta" href="/login"><button>Login</button></a>
+      <a class="cta" href="/loginUsuario"><button>Login</button></a>
     </header>
   </div>
 
@@ -83,6 +83,12 @@
                   <div id="emailHelp" class="form-text"></div>
                 </div>
                 <div class="col-md-12 position-relative">
+                  <label for="validationTooltip07" class="form-label">Senha</label>
+                  <input type="password" name="edtSenha" value="<%= usuario.senha %>" class="form-control" id="validationTooltip07"  required>
+                  <div class="valid-tooltip">
+                  </div>
+                </div>
+                <div class="col-md-12 position-relative">
                   <label for="validationTooltip010" class="form-label">Cep</label>
                   <input type="text" name="edtCep" value="<%= usuario.cep %>" class="form-control" id="validationTooltip09"  required>
                   <div class="valid-tooltip">
@@ -133,7 +139,7 @@
                 </div>
                 <div class="col-12">
                   <tr>
-                    <td><a href="/"> <button class="btn btn-primary"> Cancelar </button>  </a></td>
+                    <td><a href="/loginUsuario"> <button class="btn btn-primary"> Cancelar </button>  </a></td>
                     <td><button type="submit" value="Salvar" class="btn btn-primary">Cadastrar</button></td>
                   </tr>
                 </div>
