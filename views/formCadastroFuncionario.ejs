@@ -25,24 +25,24 @@
               <form action="<%= action %>" method="POST" class="row g-3 needs-validation" novalidate>
                 <div class="col-md-12 position-relative">
                   <label for="validationTooltip01" class="form-label">Nome</label>
-                  <input type="text" name="edtNomeFuncionario" value="<%= funcionario.usunome %>" class="form-control" id="validationTooltip01"  required>
+                  <input type="text" name="edtNomeFuncionario" value="<%= funcionario.nomeFuncionario %>" class="form-control" id="validationTooltip01"  required>
                   <div class="valid-tooltip">
                   </div>
                 </div>
                 <div class="col-md-12 position-relative">
                   <label for="validationTooltip07" class="form-label">Senha</label>
-                  <input  type="password" name="edtSenhaFuncionario" value="<%= funcionario.ususenha %>"  class="form-control" id="validationTooltip07"  required>
+                  <input  type="password" name="edtSenhaFuncionario" value="<%= funcionario.senhaFuncionario %>"  class="form-control" id="validationTooltip07"  required>
                   <div class="valid-tooltip">
                   </div>
                 <div class="col-md-12 position-relative">
                   <label for="exampleInputEmail9" class="form-label">ID do Funcionario</label>
-                  <input type="text" name="edtUsuFuncionario" value="<%= funcionario.usufuncionario %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input type="text" name="edtUsuFuncionario" value="<%= funcionario.usuFuncionario %>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                   <div id="emailHelp" class="form-text"></div>
                 </div>
                 </div>
                 <div class="col-8">
                   <tr>
-                    <td><a href="/"> <button class="btn btn-primary"> Cancelar </button>  </a></td>
+                    <td><a href="/loginFuncionario"> <button class="btn btn-primary"> Cancelar </button>  </a></td>
                     <td><button type="submit" value="Salvar" class="btn btn-primary">Cadastrar</button></td>
                   </tr>
                 </div>

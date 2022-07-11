@@ -15,19 +15,19 @@
       <table>
         <tr>
           <td>Nome</td>
-          <td><input type="text" name="edtNomeAnimal" value="<%= registro.aninome %>" /></td>
+          <td><input type="text" name="edtAniNome" value="<%= registro.aninome %>" /></td>
         </tr>
         <tr>
           <td>Idade</td>
-          <td><input type="number" name="edtIdade" value="<%= registro.aniidade %>" /></td>
+          <td><input type="number" name="edtAniIdade" value="<%= registro.aniidade %>" /></td>
         </tr>
         <tr>
           <td>Cor</td>
-          <td><input type="text" name="edtCor" value="<%= registro.anicor %>" /></td>
+          <td><input type="text" name="edtAniCor" value="<%= registro.anicor %>" /></td>
         </tr>
         <tr>
           <td>Gênero</td>
-          <td><select name="cmbGenero">
+          <td><select name="GenCodigo" >
                 <option value="1" <% if(registro.gencodigo == 1) { %> selected <% } %> >Gato</option>
                 <option value="2" <% if(registro.gencodigo == 2) { %> selected <% } %> >Cachorro</option>
                 <option value="3" <% if(registro.gencodigo == 3) { %> selected <% } %> >Cavalo</option>
@@ -35,11 +35,11 @@
                 </select></td>
             </tr>
             <td>Foto do animal</td>
-            <td><input type="file"  name="edtImagem" value="<%= registro.aniimagem %>"  /></td>
+            <td><input type="file"  name="file" value="<%= registro.aniimagem %>"  /></td>
           </tr>
           <tr>
             <td>Descrição do animal </td>
-            <td><input type="text" name="edtDescricao" value="<%= registro.anidescricao %>" /></td>
+            <td><input type="text" name="edtAniDescricao" value="<%= registro.anidescricao %>" /></td>
           </tr>
           <tr>
             <tr>
