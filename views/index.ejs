@@ -14,10 +14,12 @@
     <table style="width:50%">
       <thead>
         <tr style="background-color: #CCC">
-          <td style="width:20%">Nome</td>
-          <td style="width:20%">Idade</td>
-          <td style="width:20%">Cor</td>
-          <td style="width:20%">Raça</td>
+          <td style="width:16%">Nome</td>
+          <td style="width:16%">Idade</td>
+          <td style="width:16%">Cor</td>
+          <td style="width:16%">Genero</td>
+          <td style="width:16%">Imagem</td>
+          <td style="width:16%">Descrição</td>
           <td>Ações</td>
         </tr>
       </thead>
@@ -30,10 +32,12 @@
         <% } else { 
           registros.forEach(function(animal){ %>
             <tr>
-              <td style="width:20%"><%= animal.aninome %></td>
-              <td style="width:20%"><%= animal.aniidade %></td>
-              <td style="width:20%"><%= animal.anicor %></td>
-              <td style="width:20%"><%= animal.gencodigo %></td>
+              <td style="width:16%"><%= animal.aninome %></td>
+              <td style="width:16%"><%= animal.aniidade %></td>
+              <td style="width:16%"><%= animal.anicor %></td>
+              <td style="width:16%"><%= animal.gencodigo %></td>
+              <td style="width:16%"><%= animal.aniimagem %></td>
+              <td style="width:16%"><%= animal.anidescricao %></td>
               <td>
                 <a href="/animalAltera/<%= animal.anicodigo %>">Alterar</a> |
                 <a href="/animalApaga/<%= animal.anicodigo %>" onclick="return confirm('Confirma exclusão?');">Excluir</a>

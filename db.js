@@ -40,16 +40,17 @@ async function listarAnimal()
 async function inserirAnimal(animal)
 {
     const conn = await conectarBD()
+    console.log("Teste de cadastro de usuário..." + animal.aninome, animal.aniidade, animal.anicor, animal.gencodigo, animal.aniimagem, animal.anidescricao)
     const sql = "insert into animal (aninome, aniidade, anicor, gencodigo, aniimagem, anidescricao) values (?,?,?,?,?,?);"
-    return await conn.query(sql,[animal.nome, animal.idade, animal.cor, animal.genero, animal.imagem, animal.descricao])
+    return await conn.query(sql,[animal.aninome, animal.aniidade, animal.anicor, animal.gencodigo, animal.aniimagem, animal.anidescricao])
 }
 
 
-async function selecionarAnimal(codigo)
+async function selecionarAnimal(anicodigo)
 {
     const conn = await conectarBD()
     const sql = "select * from animal where anicodigo=?;"
-    const [registro] = await conn.query(sql,[codigo])
+    const [registro] = await conn.query(sql,[anicodigo])
     return registro && registro.length>0 ? registro[0] : {}
     /**
      * 
@@ -64,15 +65,15 @@ async function alterarAnimal(animal)
 {
     const conn = await conectarBD()
     const sql = "update animal set aninome=?, aniidade=?, anicor=?, gencodigo=?, aniimagem=?, anidescricao=? where anicodigo=?;"
-    return await conn.query(sql,[animal.nome, animal.idade, animal.cor, animal.genero, animal.imagem, animal.descricao, animal.codigo ])
+    return await conn.query(sql,[animal.aninome, animal.aniidade, animal.anicor, animal.gencodigo, animal.aniimagem, animal.anidescricao, animal.anicodigo ])
 }
 
 
-async function apagarAnimal(codigo)
+async function apagarAnimal(anicodigo)
 {
     const conn = await conectarBD()
     const sql = "delete from animal where anicodigo=?;"
-    return await conn.query(sql,[codigo])
+    return await conn.query(sql,[anicodigo])
 }
 
 
@@ -80,8 +81,8 @@ async function buscarFuncionario(fu)
 {
     const conn = await conectarBD()
     const sql = "select * from usuarioFuncionario where usuFuncionario=? and ususenha=?;"
-    const [usuarioEcontrado] = await conn.query(sql,[fu.funcionario, fu.senha])
-    return usuarioEcontrado && usuarioEcontrado.length>0 ? usuarioEcontrado[0] : {}
+    const [funcionarioEcontrado] = await conn.query(sql,[fu.funcionario, fu.senha])
+    return funcionarioEcontrado && funcionarioEcontrado.length>0 ? funcionarioEcontrado[0] : {}
 }
 
 async function cadastroUsuario(usuario)
@@ -99,12 +100,12 @@ async function cadastroUsuario(usuario)
 async function cadastroFuncionario(funcionario)
 {
     const conn = await conectarBD();
-    console.log("Teste de cadastro de funcionario..." + funcionario.nome, funcionario.senha, funcionario.funcionario)
-    const sql = "insert into usuariofuncionario (usunome, ususenha, usuFuncionario) values (?,?,?);"
-    return await conn.query(sql, [funcionario.nome, funcionario.senha, funcionario.funcionario]);
+    console.log("Teste de cadastro de funcionario..." + funcionario.nomeFuncionario, funcionario.senhaFuncionario, funcionario.usuFuncionario)
+    const sql = "insert into usuariofuncionario (usunome, ususenha, usufuncionario) values (?,?,?);"
+    return await conn.query(sql, [funcionario.nomeFuncionario, funcionario.senhaFuncionario, funcionario.usuFuncionario]);
 }
 
-async function buscarUsuario(us1)
+async function buscarUsuario(us)
 {
     const conn = await conectarBD()
     const sql = "select * from usuario where usuemail=? and ususenha=?;"

@@ -9,44 +9,6 @@ const multerConfig = require("./config/multer");
   res.render('index');
 })*/
 
-router.get('/listaDeAnimal', async function(req, res) {
-
-  
-    if (!global.usuariocodigo || global.usuariocodigo == 0)
-    {
-      res.redirect('/loginFuncionario')
-    }
-    const registros = await global.db.listarAnimal()
-    const usu = global.usuariofuncionario
-  
-    res.render('listaAnimal', { registros, usu })
-  
-})
-
-router.get('/loginFuncionario', function(req, res){
-  res.render('loginFuncionario')
-})
-
-
-router.post('/loginFuncionario', async function(req, res){
-  const funcionario = req.body.edtFuncionario
-  const senha       = req.body.edtFuncionarioSenha
-  
-  const user = await global.db.buscarFuncionario({funcionario,senha})
-  console.log("Login global.. " + user.usucodigo + "Funcionario:" + user.funcionario)
-  global.usuariocodigo       = user.usucodigo
-  global.usuariofuncionario  = user.usuariofuncionario
-  res.redirect('/listaDeAnimal')
-})
-
-router.get('/sair', function(req, res){
-
-  global.usuariocodigo       = 0
-  global.usuariofuncionario  = 0
-
-  res.redirect('/loginFuncionario')
-})
-
 router.get('/animalNovo', function(req, res){
   //res.render('formAnimal', { title: "Cadastro de Animal", action: "/animalNovo" })
   res.render('formAnimal', { title: "Cadastro de Animal", registro:{}, action: "/animalNovo" })
@@ -68,11 +30,11 @@ router.get('/animalApaga/:id', async function(req,res){
 
 
 router.get('/animalAltera/:id', async function(req,res){
-  const codigo = parseInt(req.params.id)
+  const anicodigo = parseInt(req.params.id)
   try
   {
-    const registro = await global.db.selecionarAnimal(codigo)
-    res.render('formAnimal', {title: "Alteração de Animal", registro, action: "/animalAltera/"+codigo })
+    const registro = await global.db.selecionarAnimal(anicodigo)
+    res.render('formAnimal', {title: "Alteração de Animal", registro, action: "/animalAltera/"+anicodigo })
   }
   catch(erro)
   {
@@ -82,23 +44,77 @@ router.get('/animalAltera/:id', async function(req,res){
 
 
 router.post('/animalNovo', async function(req, res) {
-  const nomeAnimal = req.body.edtNomeAnimal
-  const idade = !req.body.edtIdade ? null : parseInt(req.body.edtIdade)
-  const cor    = req.body.edtCor 
-  const genero = !req.body.cmbGenero ? null : parseInt(req.body.cmbGenero)
-  const imagem = req.body.edtImagem
-  const descricao = req.body.edtDescricao
+  const aninome   = req.body.edtAniNome
+  const aniidade  = !req.body.edtAniIdade ? null : parseInt(req.body.edtAniIdade)
+  const anicor    = req.body.edtAniCor 
+  const gencodigo = !req.body.GenCodigo ? null : parseInt(req.body.GenCodigo)
+  const aniimagem = req.body.edtAniImagem
+  const anidescricao = req.body.edtAniDescricao
 
   try
   {
-    console.log("Ação: ")
-    await global.db.inserirAnimal({nomeAnimal, idade, cor, genero, imagem, descricao})
+    await global.db.inserirAnimal({aninome, aniidade, anicor, gencodigo, aniimagem, anidescricao})
     res.redirect('/listaDeAnimal')
   }
   catch(erro)
   {
     res.redirect('/?erro='+erro)
   }
+})
+
+
+router.get('/', function(req, res){
+  res.render('telaPrincipal', { title: "Frada joinville"})
+})
+
+router.post('/alterarAnimal/:id', async function(req, res) {
+  const anicodigo      = parseInt(req.params.id)
+  const aninome        = req.body.aniNome
+  const aniidade       = !req.body.edtAniIdade ? null : parseInt(req.body.edtIdade)
+  const anicor         = req.body.edtAniCor 
+  const anigenero      = !req.body.cmbAniGenero ? null : parseInt(req.body.cmbGenero)
+  const aniimagem      = req.body.edtAniImagem
+  const anidescricao   = req.body.edtAniDescricao
+
+  try
+  {
+    await global.db.alterarAnimal({aninome, aniidade, anicor, anigenero, aniimagem, anidescricao, anicodigo})
+    res.redirect('/listaDeAnimal')
+  }
+  catch(erro)
+  {
+    res.redirect('/?erro='+erro)
+  }
+})
+
+router.post("/posts", multer(multerConfig).single("file"), async (req, res) => {
+
+  return res.json(res.render('telaPrincipal', { title: "Frada joinville"}));
+
+})
+
+router.get('/posts', function(req, res){
+  res.render('foto', { title: "Frada joinville"})
+})
+
+router.get('/loginUsuario', function(req, res){
+  res.render('loginUsuario')
+})
+
+
+router.post('/loginUsuario', async function(req, res){
+  const emailUsuario  = req.body.edtEmailUsuario
+  const senhaUsuario  = req.body.edtsenhaUsuario
+  
+  const user = await global.db.buscarUsuario({emailUsuario,senhaUsuario})
+  console.log("Login global.. " + user.emailUsuario + "Funcionario:" + user.senhaUsuario)
+  global.usuariocodigo       = user.usucodigo
+  global.usuario             = user.usuario
+  res.redirect('/')
+})
+
+router.get('/usuarioNovo', function(req, res){
+  res.render('formCadastro1', { title: "Crud de Usuario", usuario:{}, action: "/usuarioNovo" })
 })
 
 router.post('/usuarioNovo', async function(req, res) {
@@ -125,7 +141,7 @@ router.post('/usuarioNovo', async function(req, res) {
 
   try
   {
-    await global.db.CadastroUsuario({nome, sobrenome, sexo, cpf, telefone, celular, nasc, email, idade, cep, rua, numero, complemento, referencia, bairro, cidade, estado, senha })
+    await global.db.cadastroUsuario({nome, sobrenome, sexo, cpf, telefone, celular, nasc, email, idade, cep, rua, numero, complemento, referencia, bairro, cidade, estado, senha })
     res.redirect('/')
   }
   catch(erro)
@@ -134,44 +150,29 @@ router.post('/usuarioNovo', async function(req, res) {
   }
 })
 
-router.get('/usuarioNovo', function(req, res){
-  res.render('formCadastro1', { title: "Crud de Usuario", usuario:{}, action: "/usuarioNovo" })
+router.get('/loginFuncionario', function(req, res){
+  res.render('loginFuncionario')
 })
 
-router.get('/', function(req, res){
-  res.render('telaPrincipal', { title: "Frada joinville"})
+
+router.post('/loginFuncionario', async function(req, res){
+  const funcionario = req.body.edtFuncionario
+  const senha       = req.body.edtFuncionarioSenha
+  
+  const user = await global.db.buscarFuncionario({funcionario,senha})
+  console.log("Login global.. " + user.usucodigo + "Funcionario:" + user.funcionario)
+  global.usuariocodigo       = user.usucodigo
+  global.usuariofuncionario  = user.usuariofuncionario
+  res.redirect('/listaDeAnimal')
 })
 
-router.post('/animalAltera/:id', async function(req, res) {
-  const codigo = parseInt(req.params.id)
-  const nome = req.body.edtNome 
-  const idade    = !req.body.edtIdade ? null : parseInt(req.body.edtIdade)
-  const cor    = req.body.edtCor 
-  const genero = !req.body.cmbGenero ? null : parseInt(req.body.cmbGenero)
-  const imagem    = req.body.edtImagem
-  const descricao    = req.body.edtDescricao
+router.get('/sair', function(req, res){
 
-  try
-  {
-    await global.db.alterarAnimal({nome, idade, cor, genero, codigo, imagem, descricao})
-    res.redirect('/listaDeAnimal')
-  }
-  catch(erro)
-  {
-    res.redirect('/?erro='+erro)
-  }
+  global.usuariocodigo       = 0
+  global.usuariofuncionario  = 0
+
+  res.redirect('/loginFuncionario')
 })
-
-router.post("/posts", multer(multerConfig).single("file"), async (req, res) => {
-
-  return res.json(res.render('telaPrincipal', { title: "Frada joinville"}));
-
-})
-
-router.get('/posts', function(req, res){
-  res.render('foto', { title: "Frada joinville"})
-})
-
 
 router.get('/funcionarioNovo', function(req, res){
   res.render('formCadastroFuncionario', { title: "Crud de Funcionario", funcionario:{}, action: "/funcionarioNovo" })
@@ -180,13 +181,13 @@ router.get('/funcionarioNovo', function(req, res){
 router.post('/funcionarioNovo', async function(req, res) {
   const nomeFuncionario  = req.body.edtNomeFuncionario
   const senhaFuncionario = req.body.edtSenhaFuncionario
-  const usufuncionario      = req.body.edtUsuFuncionario 
+  const usuFuncionario   = req.body.edtUsuFuncionario 
 
 
   try
   {
     console.log("Ação: ")
-    await global.db.CadastroFuncionario({nomeFuncionario, senhaFuncionario, usufuncionario})
+    await global.db.cadastroFuncionario({nomeFuncionario, senhaFuncionario, usuFuncionario})
     res.redirect('/listaDeAnimal')
   }
   catch(erro)
@@ -195,24 +196,18 @@ router.post('/funcionarioNovo', async function(req, res) {
   }
 })
 
+router.get('/listaDeAnimal', async function(req, res) {
 
-router.get('/loginUsuario', function(req, res){
-  res.render('loginUsuario')
+
+  if (!global.usuariocodigo || global.usuariocodigo == 0)
+  {
+    res.redirect('/loginFuncionario')
+  }
+  const registros = await global.db.listarAnimal()
+  const usu = global.usuariofuncionario
+
+  res.render('listaAnimal', { registros, usu })
+
 })
-
-
-router.post('/loginUsuario', async function(req, res){
-  const emailUsuario  = req.body.edtEmailUsuario
-  const senhaUsuario  = req.body.edtsenhaUsuario
-  
-  const user = await global.db.buscarUsuario({emailUsuario,senhaUsuario})
-  console.log("Login global.. " + user.usucodigo + "Funcionario:" + user.funcionario)
-  global.usuariocodigo       = user.usucodigo
-  global.usuariofuncionario  = user.usuariofuncionario
-  res.redirect('/')
-})
-
-
-
 
 module.exports = router;
