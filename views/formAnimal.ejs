@@ -11,7 +11,7 @@
     <h1><%= title %></h1>
     <p>Preencha os dados abaixo e clique em Salvar o novo animal.</p>
   <div>
-    <form action="<%= action %>" method="POST" enctype="multipart/form-data" >
+    <form action="<%= action %>" method="POST" >
       <table>
         <tr>
           <td>Nome</td>
@@ -27,16 +27,15 @@
         </tr>
         <tr>
           <td>Gênero</td>
-          <td><select name="GenCodigo" >
+          <td><select name="cmbGenero">
                 <option value="1" <% if(registro.gencodigo == 1) { %> selected <% } %> >Gato</option>
                 <option value="2" <% if(registro.gencodigo == 2) { %> selected <% } %> >Cachorro</option>
                 <option value="3" <% if(registro.gencodigo == 3) { %> selected <% } %> >Cavalo</option>
                 <option value="4" <% if(registro.gencodigo == 4) { %> selected <% } %> >Papagaio</option>
                 </select></td>
-            </tr>
+        </tr>
             <td>Foto do animal</td>
-            <td><input type="file"  name="file" value="<%= registro.aniimagem %>"  /></td>
-          </tr>
+            <td><input type="file"  name="edtAniImagem" value="<%= registro.aniimagem %>"  /></td>
           <tr>
             <td>Descrição do animal </td>
             <td><input type="text" name="edtAniDescricao" value="<%= registro.anidescricao %>" /></td>

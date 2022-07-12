@@ -3,14 +3,8 @@ var router = express.Router()
 const multer = require('multer')
 const multerConfig = require("./config/multer");
 
-/* GET home page. */
-
-/*router.get('/', function(req, res, next) {
-  res.render('index');
-})*/
 
 router.get('/animalNovo', function(req, res){
-  //res.render('formAnimal', { title: "Cadastro de Animal", action: "/animalNovo" })
   res.render('formAnimal', { title: "Cadastro de Animal", registro:{}, action: "/animalNovo" })
 })
 
@@ -30,11 +24,11 @@ router.get('/animalApaga/:id', async function(req,res){
 
 
 router.get('/animalAltera/:id', async function(req,res){
-  const anicodigo = parseInt(req.params.id)
+  const codigo = parseInt(req.params.id)
   try
   {
-    const registro = await global.db.selecionarAnimal(anicodigo)
-    res.render('formAnimal', {title: "Alteração de Animal", registro, action: "/animalAltera/"+anicodigo })
+    const registro = await global.db.selecionarAnimal(codigo)
+    res.render('formAnimal', {title: "Alteração de Animal", registro, action: "/animalAltera/"+codigo })
   }
   catch(erro)
   {
@@ -44,11 +38,11 @@ router.get('/animalAltera/:id', async function(req,res){
 
 
 router.post('/animalNovo', async function(req, res) {
-  const aninome   = req.body.edtAniNome
-  const aniidade  = !req.body.edtAniIdade ? null : parseInt(req.body.edtAniIdade)
-  const anicor    = req.body.edtAniCor 
-  const gencodigo = !req.body.GenCodigo ? null : parseInt(req.body.GenCodigo)
-  const aniimagem = req.body.edtAniImagem
+  const aninome      = req.body.edtAniNome
+  const aniidade     = !req.body.edtAniIdade ? null : parseInt(req.body.edtAniIdade)
+  const anicor       = req.body.edtAniCor 
+  const gencodigo       = !req.body.cmbGenero ? null : parseInt(req.body.cmbGenero)
+  const aniimagem    = req.body.edtAniImagem
   const anidescricao = req.body.edtAniDescricao
 
   try
@@ -72,13 +66,13 @@ router.post('/alterarAnimal/:id', async function(req, res) {
   const aninome        = req.body.aniNome
   const aniidade       = !req.body.edtAniIdade ? null : parseInt(req.body.edtIdade)
   const anicor         = req.body.edtAniCor 
-  const anigenero      = !req.body.cmbAniGenero ? null : parseInt(req.body.cmbGenero)
+  const gencodigo         = !req.body.cmbGenero ? null : parseInt(req.body.cmbGenero)
   const aniimagem      = req.body.edtAniImagem
   const anidescricao   = req.body.edtAniDescricao
 
   try
   {
-    await global.db.alterarAnimal({aninome, aniidade, anicor, anigenero, aniimagem, anidescricao, anicodigo})
+    await global.db.alterarAnimal({aninome, aniidade, anicor, gencodigo, aniimagem, anidescricao, anicodigo})
     res.redirect('/listaDeAnimal')
   }
   catch(erro)
@@ -101,16 +95,33 @@ router.get('/loginUsuario', function(req, res){
   res.render('loginUsuario')
 })
 
-
 router.post('/loginUsuario', async function(req, res){
-  const emailUsuario  = req.body.edtEmailUsuario
-  const senhaUsuario  = req.body.edtsenhaUsuario
+  const email = req.body.edtEmail
+  const senha   = req.body.edtSenha
   
-  const user = await global.db.buscarUsuario({emailUsuario,senhaUsuario})
-  console.log("Login global.. " + user.emailUsuario + "Funcionario:" + user.senhaUsuario)
-  global.usuariocodigo       = user.usucodigo
-  global.usuario             = user.usuario
+  const us = await global.db.buscarUsuario({email,senha})
+  console.log("Login global.. " + us.usucodigo + "Usuario:" + us.usuario)
+  global.usuariocodigo    = us.usucodigo
+  global.usuario          = us.usuario
   res.redirect('/')
+})
+
+router.get('/', async function(req, res) {
+  try
+  {
+    if (usuario && senha == 0) 
+    {
+      res.redirect('/loginUsuario')
+    }
+    const registros = await global.db.listarLivros()
+    const us = global.usuario
+    res.render('listaAnimal', { registros, us })
+  }
+  catch(error)
+  {
+    res.redirect('/?erro='+error);
+  }
+  
 })
 
 router.get('/usuarioNovo', function(req, res){
@@ -153,7 +164,6 @@ router.post('/usuarioNovo', async function(req, res) {
 router.get('/loginFuncionario', function(req, res){
   res.render('loginFuncionario')
 })
-
 
 router.post('/loginFuncionario', async function(req, res){
   const funcionario = req.body.edtFuncionario
