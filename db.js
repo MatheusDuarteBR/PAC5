@@ -52,19 +52,12 @@ async function selecionarAnimal(codigo)
     const sql = "select * from animal where anicodigo=?;"
     const [registro] = await conn.query(sql,[codigo])
     return registro && registro.length>0 ? registro[0] : {}
-    /**
-     * 
-     * if(rows && rows.length > 0) 
-     *   return rows[0] 
-     * else 
-     *   return {}
-     */
 }
 
 async function alterarAnimal(animal)
 {
     const conn = await conectarBD()
-    console.log("Teste de alteração de animal..." +animal.aninome, animal.aniidade, animal.anicor, animal.gencodigo, animal.aniimagem, animal.anidescricao, animal.anicodigo)
+    console.log("Teste de alteração de animal..." + animal.aninome, animal.aniidade, animal.anicor, animal.gencodigo, animal.aniimagem, animal.anidescricao, animal.anicodigo)
     const sql = "update animal set aninome=?, aniidade=?, anicor=?, gencodigo=?, aniimagem=?, anidescricao=? where anicodigo=?;"
     return await conn.query(sql,[animal.aninome, animal.aniidade, animal.anicor, animal.gencodigo, animal.aniimagem, animal.anidescricao, animal.anicodigo ])
 }

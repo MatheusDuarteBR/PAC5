@@ -78,17 +78,6 @@
     }
   </style>
   <body>
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-auto">
-            <img class="logo" src="/src/logo.png" alt="logo">
-            </div>
-            <div class="col-auto align-self-start">
-            <a class="cta" href="/login"><button>Login</button></a>
-            <a class="cta" href="/usuarioNovo"><button>Registro</button></a>
-            </div>
-        </div>
-    </div> -->
     <header class="navbar navbar-dark bd-navbar">
         <nav class="container"><img class="logo" src="/src/logo.png" alt="logo">
           <div class="offcanvas-lg offcanvas-end flex-grow-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
@@ -98,13 +87,12 @@
         </nav>
     </header>
     <div class="container">
-      <!-- <div id="centro" class="card align-self-center"> -->
       <div id="centro" class="card position-absolute top-50 start-50 translate-middle">
         <div id="rowCard" class="row">
             <h2 id="id">Identifique-se</h2>
             <form action="/loginFuncionario" method="post">
                 <div id="usu" class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                    <label for="exampleInputEmail1" class="form-label">Funcionario</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" name="edtFuncionario"  aria-describedby="emailHelp">
                     <div id="emailHelp" class="form-text"></div>
                 </div>
@@ -115,15 +103,6 @@
                 <button id="cadastrar" type="submit" class="btn btn-primary" value="Entrar" ><a style="color: white;text-decoration: none;" href="/funcionarioNovo">Cadastrar</a></button>
                 <button id="entrar" type="submit" class="btn btn-primary" value="Entrar" ><a>Entrar</button></a></button>
             </form>
-          <!-- <div class="col-3">
-
-          </div>
-          <div class="col-6">
-            
-          </div>
-          <div class="col-3">
-              
-          </div> -->
         </div>
       </div>
       <footer id="rodape" class="footer fixed-bottom">
@@ -134,7 +113,6 @@
                 <div class="footer__addr">
                   
                   <h3 class="footer__logo">Frada Joinville</h3>
-                    <!-- <br> -->
                   <h5>Endereço:</h5>
                   <address>
                     Estrada Blumenau - Vila Nova, Joinville - SC, 89237-820<br>

@@ -1,6 +1,103 @@
-<html>
-    <form action="/posts" method="post" enctype="multipart/form-data" >
-        <input  type="file" name="file"/>
-        <button  type="file" class="btn btn-primary" name="file" ><a>Enviar</button></a></button>
-        </form>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Foto do Animal</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <style>
+    .logo{
+      max-height: 120px;
+    }
+    body{
+      background-image: url(/src/papeldeparede.png);
+      background-color: rgb(0, 151, 133);
+      margin-bottom: 2%;
+      text-align: center;
+    }
+    .footer{
+      margin-top: 2%;
+    }
+    #cardAnimal{
+      /* width: 36rem; */
+      height: 36rem;
+    }
+    #cardAnimalBody{
+      height: 100%;
+    }
+    #rowCard{
+      height: 100%;
+    }
+    #x{
+      color: coral;
+    }
+    #heart{
+      color: red;
+    }
+    #foto{
+      max-height: 444px;
+    }
+    #infos{
+      margin-top: 10%;
+    }
+    #centro{
+      transform: translate(-50%,-40%)!important;
+
+      top: 40%!important;
+      
+      left: 50%!important;
+    }
+    #rodape{
+      margin-left: 6%;
+      margin-right: 6%;
+      margin-bottom: 2%;
+    }
+    #id{
+      margin-left: 0%;
+      margin-top: 2%;
+    }
+    #enviar{
+      margin-bottom: 3%;
+      margin-left: 3%;
+      color: white;
+      text-decoration: none;
+    }
+    input {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    }
+    a {
+    color: white;
+    text-decoration: underline;
+}
+  </style>
+  <body>
+    <header class="navbar navbar-dark bd-navbar">
+        <nav class="container"><img class="logo" src="/src/logo.png" alt="logo">
+          <div class="offcanvas-lg offcanvas-end flex-grow-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+            
+      
+          </div>
+        </nav>
+    </header>
+    <div class="container">
+      <div id="centro" class="card position-absolute top-50 start-50 translate-middle">
+        <div id="rowCard" class="row">
+            <h2 id="id">Insira a imagem aqui novamente:</h2>
+            <form action="/posts" method="post" enctype="multipart/form-data" >
+                <div class="card-body">
+                <input type="file" name="file"/>
+                <button  type="file" class="btn btn-primary btn-lg" name="file" >
+                <a href="/listaDeAnimal">Enviar</button></a></button>
+            </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+  
 </html>

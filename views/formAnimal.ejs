@@ -1,55 +1,167 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/styleLogin1.css">
     <title>CRUD de Animal</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <meta charset="utf-8" />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Preencha os dados abaixo e clique em Salvar o novo animal.</p>
-  <div>
-    <form action="<%= action %>" method="POST" >
-      <table>
-        <tr>
-          <td>Nome</td>
-          <td><input type="text" name="edtAniNome" value="<%= registro.aninome %>" /></td>
-        </tr>
-        <tr>
-          <td>Idade</td>
-          <td><input type="number" name="edtAniIdade" value="<%= registro.aniidade %>" /></td>
-        </tr>
-        <tr>
-          <td>Cor</td>
-          <td><input type="text" name="edtAniCor" value="<%= registro.anicor %>" /></td>
-        </tr>
-        <tr>
-          <td>Gênero</td>
-          <td><select name="cmbGenero">
-                <option value="1" <% if(registro.gencodigo == 1) { %> selected <% } %> >Gato</option>
-                <option value="2" <% if(registro.gencodigo == 2) { %> selected <% } %> >Cachorro</option>
-                <option value="3" <% if(registro.gencodigo == 3) { %> selected <% } %> >Cavalo</option>
-                <option value="4" <% if(registro.gencodigo == 4) { %> selected <% } %> >Papagaio</option>
-                </select></td>
-        </tr>
-            <td>Foto do animal</td>
-            <td><input type="file"  name="edtAniImagem" value="<%= registro.aniimagem %>"  /></td>
-          <tr>
-            <td>Descrição do animal </td>
-            <td><input type="text" name="edtAniDescricao" value="<%= registro.anidescricao %>" /></td>
-          </tr>
-          <tr>
-            <tr>
-              <button id="Cancelar" type="submit" class="btn btn-primary" value="Cancelar" ><a style="color: white;text-decoration: none;" href="/listaDeAnimal">Cancelar</a></button>
-              <button id="Salvar" type="submit" class="btn btn-primary" value="Salvar" ><a>Salvar</button></a></button>
-            </tr>
-      </table>
-        
-        
-    </form>
-  </div>
+  </head>   
+
+  <style>
+    .logo{
+      max-height: 120px;
+    }
+    body{
+      background-image: url(/src/papeldeparede.png);
+      background-color: rgb(0, 151, 133);
+      margin-bottom: 2%;
+      text-align: center;
+      color: aliceblue;
+      FONT-WEIGHT: 500;
+      
+    }
+    .footer{
+      margin-top: 2%;
+    }
+    #cardAnimal{
+      /* width: 36rem; */
+      height: 36rem;
+    }
+    #cardAnimalBody{
+      height: 100%;
+    }
+    #rowCard{
+      height: 100%;
+    }
+    #x{
+      color: coral;
+    }
+    #heart{
+      color: red;
+    }
+    #foto{
+      max-height: 444px;
+    }
+    #infos{
+      margin-top: 10%;
+    }
+    #centro{
+      transform: translate(-50%,-40%)!important;
+
+      top: 40%!important;
+      
+      left: 50%!important;
+    }
+    #rodape{
+      margin-left: 6%;
+      margin-right: 6%;
+      margin-bottom: 2%;
+    }
+    #id{
+      margin-left: 0%;
+      margin-top: 2%;
+    }
+    #enviar{
+      margin-bottom: 3%;
+      margin-left: 3%;
+      color: white;
+      text-decoration: none;
+    }
+    button {
+    font-family: inherit;
+    font-size: inherit;
+     text-align: center;
+    }
+    input {
+      margin: auto;
+    }
+    p {
+    color: white;
+    }
+    td {
+    color: white;
+    margin-left: 23%;
+    font-size: large;
+    text-align: center;
+    }
+    .col-md-3{
+      text-align: center;
+      
+    }
+    .form-select{
+      margin-left: 150%;
+      margin-bottom: 3%;
+    }
+    .row1 {
+    color: black;
+
+    }
+    a {
+    color: white;
+    text-decoration: underline;
+}
+  </style>
+    <body>
+        <h1><%= title %></h1>
+        <p>Preencha os dados abaixo e clique em Salvar o novo animal.</p>
+
+        <div class="conteiner">
+          <div class="row1">
+            <div>
+                <form action="<%= action %>" method="POST" >
+                    <table>
+                      <div class="col-md-12 position-relative">
+                        <label for="validationTooltip01" class="form-label">Nome :</label>
+                        <input type="text" name="edtAniNome" value="<%= registro.aninome %>" />
+                        <div class="valid-tooltip">
+                        </div>
+                      </div>
+                      <div class="col-md-12 position-relative">
+                        <label for="validationTooltip01" class="form-label">Idade :</label>
+                        <input type="number" name="edtAniIdade" value="<%= registro.aniidade %>" />
+                        <div class="valid-tooltip">
+                        </div>
+                      </div>
+                      <div class="col-md-12 position-relative">
+                        <label for="validationTooltip01" class="form-label">Cor   :</label>
+                        <input type="text" name="edtAniCor" value="<%= registro.anicor %>" />
+                        <div class="valid-tooltip">
+                        </div>
+                      <div class="col-md-3 position-relative">
+                          <label for="validationTooltip03" class="form-label">Gênero</label>
+                          <select class="form-select" name="cmbGenero"  id="validationTooltip03" required>
+                            <option value="1" <% if(registro.gencodigo == 1) { %> selected <% } %> >Gato</option>
+                            <option value="2" <% if(registro.gencodigo == 2) { %> selected <% } %> >Cachorro</option>
+                            <option value="3" <% if(registro.gencodigo == 3) { %> selected <% } %> >Cavalo</option>
+                            <option value="4" <% if(registro.gencodigo == 4) { %> selected <% } %> >Papagaio</option>
+                          </select>
+                          <div class="invalid-tooltip">
+                            Please select a valid state.
+                      </div>
+                      </div>
+                      <div class="col-md-12 position-relative">
+                        <label for="validationTooltip01" class="form-label">Foto do animal :</label>
+                        <input input type="file"  name="edtAniImagem" value="<%= registro.aniimagem %>" />
+                        <div class="valid-tooltip">
+                        </div>
+                      </div>
+                      <div class="col-md-12 position-relative">
+                        <label for="validationTooltip01" class="form-label">Descrição:</label>
+                        <input type="text" name="edtAniDescricao" value="<%= registro.anidescricao %>" />
+                        <div class="valid-tooltip">
+                        </div>
+                      </div>
+
+                            <button id="Cancelar" class="btn btn-primary" value="Cancelar" ><a  href="/listaDeAnimal" style="color: white;text-decoration: none;" >Cancelar</a></button>
+                            <button id="Salvar" type="submit" class="btn btn-primary" value="Salvar" ><a>Salvar</button></a></button>
+                    </table>
+                  </form>
+            </div>
+          </div>
+        </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
-

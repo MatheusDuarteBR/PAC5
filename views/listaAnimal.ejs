@@ -7,21 +7,113 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta charset="utf-8" />
   </head>
-  <body>
+  <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Foto do Animal</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <style>
+    .logo{
+      max-height: 120px;
+    }
+    body{
+      background-image: url(/src/papeldeparede.png);
+      background-color: rgb(0, 151, 133);
+      margin-bottom: 2%;
+      text-align: center;
+      color: aliceblue;
+      FONT-WEIGHT: 500;
+      
+    }
+    .footer{
+      margin-top: 2%;
+    }
+    #cardAnimal{
+      /* width: 36rem; */
+      height: 36rem;
+    }
+    #cardAnimalBody{
+      height: 100%;
+    }
+    #rowCard{
+      height: 100%;
+    }
+    #x{
+      color: coral;
+    }
+    #heart{
+      color: red;
+    }
+    #foto{
+      max-height: 444px;
+    }
+    #infos{
+      margin-top: 10%;
+    }
+    #centro{
+      transform: translate(-50%,-40%)!important;
+
+      top: 40%!important;
+      
+      left: 50%!important;
+    }
+    #rodape{
+      margin-left: 6%;
+      margin-right: 6%;
+      margin-bottom: 2%;
+    }
+    #id{
+      margin-left: 0%;
+      margin-top: 2%;
+    }
+    #enviar{
+      margin-bottom: 3%;
+      margin-left: 3%;
+      color: white;
+      text-decoration: none;
+    }
+    button {
+    font-family: inherit;
+    font-size: inherit;
+     text-align: center;
+    }
+    input {
+      margin: auto;
+    }
+    p {
+    color: white;
+    }
+    td {
+    color: white;
+    margin-left: 23%;
+    font-size: large;
+    text-align: center;
+    }
+    a {
+    color: white;
+    text-decoration: underline;
+}
+  </style>
+<body>
     <h1>Listagem de Animais</h1>
     <p>Animais já cadastrados no sistema.</p>
     <p>Usuário logado: <%=usu%> | <a href="/sair">Sair</a></p>
     <table style="width:100%">
       <thead>
-        <tr style="background-color: #CCC">
-          <td style="width:16%">Nome</td>
-          <td style="width:16%">Idade</td>
-          <td style="width:16%">Cor</td>
-          <td style="width:16%">Genero</td>
-          <td style="width:16%">Imagem</td>
-          <td style="width:16%">Descrição</td>
-          <td>Ações</td>
-        </tr>
+          <tr style="background-color: rgb(84, 176, 251)">
+            <td class="border border-primary" style="width:10%">Nome</td>
+            <td class="border border-primary" style="width:10%">Idade</td>
+            <td class="border border-primary" style="width:10%">Cor</td>
+            <td class="border border-primary" style="width:10%">Genero</td>
+            <td class="border border-primary" style="width:10%">Imagem</td>
+            <td class="border border-primary" style="width:10%">Descrição</td>
+            <td class="border border-primary" style="width:10%">Ações</td>
+          </tr>
       </thead>
       <tbody>
 
@@ -32,16 +124,18 @@
         <% } else { 
           registros.forEach(function(animal){ %>
             <tr>
-              <td style="width:16%"><%= animal.aninome %></td>
-              <td style="width:16%"><%= animal.aniidade %></td>
-              <td style="width:16%"><%= animal.anicor %></td>
-              <td style="width:16%"><%= animal.gencodigo %></td>
-              <td style="width:16%"><%= animal.aniimagem %></td>
-              <td style="width:16%"><%= animal.anidescricao %></td>
-              <td>
-                <a href="/animalAltera/<%= animal.anicodigo %>">Alterar</a> |
-                <a href="/animalApaga/<%= animal.anicodigo %>" onclick="return confirm('Confirma exclusão?');">Excluir</a>
-              </td>
+              <td class="border border-dark" style="width:16%"><%= animal.aninome %></td>
+              <td class="border border-dark" style="width:16%"><%= animal.aniidade %></td>
+              <td class="border border-dark" style="width:16%"><%= animal.anicor %></td>
+              <td class="border border-dark" style="width:16%"><%= animal.gencodigo %></td>
+              <td class="border border-dark" style="width:16%"><%= animal.aniimagem %></td>
+              <td class="border border-dark" style="width:16%"><%= animal.anidescricao %></td>
+                <td>
+                  <a  class="border border-warning" href="/animalAltera/<%= animal.anicodigo %>">Alterar</a>
+                </td>
+                <td> 
+                  <a class="border border-danger" href="/animalApaga/<%= animal.anicodigo %>" onclick="return confirm('Confirma exclusão?');">Excluir</a>
+                </td>
             </tr>
         <% }) }%>
 
@@ -49,12 +143,15 @@
       <tfoot>
         <tr>
           <td colspan="4">
-            <br><a href="/animalNovo">Cadastrar Novo</a>
+            <br><button class="btn btn-primary"><a href="/animalNovo">Cadastrar Novo Animal</a></button>
           </td>
         </tr>
       </tfoot>
     </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </body>
+  
+</html>
 </html>
 
 
