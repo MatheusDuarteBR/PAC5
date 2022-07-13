@@ -2,14 +2,14 @@
 
 ## Pendências ##
 
-npm install mysql2
-npm i multer
-npm i mongoose
+npm install mysql2                                                                                                                                         
+npm i multer                                                                                                                                               
+npm i mongoose                                                                                                                                             
 
 ## Linguagens usadas no site ##
 
-Foi usado: 
-
+Foi usado:                                                                                                                                                 
+                                                                                                                                                           
 EJS, JS : Backend
 CSS: Frontend
 MYSQL: Banco de Dados
