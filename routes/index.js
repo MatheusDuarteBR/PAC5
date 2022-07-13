@@ -61,8 +61,8 @@ router.get('/', function(req, res){
   res.render('telaPrincipal', { title: "Frada joinville"})
 })
 
-router.post('/alterarAnimal/:id', async function(req, res) {
-  const anicodigo      = parseInt(req.params.id)
+router.post('/animalAltera/:id', async function(req, res) {
+  const codigo      = parseInt(req.params.id)
   const aninome        = req.body.aniNome
   const aniidade       = !req.body.edtAniIdade ? null : parseInt(req.body.edtIdade)
   const anicor         = req.body.edtAniCor 
@@ -72,7 +72,7 @@ router.post('/alterarAnimal/:id', async function(req, res) {
 
   try
   {
-    await global.db.alterarAnimal({aninome, aniidade, anicor, gencodigo, aniimagem, anidescricao, anicodigo})
+    await global.db.alterarAnimal({aninome, aniidade, anicor, gencodigo, aniimagem, anidescricao, codigo})
     res.redirect('/listaDeAnimal')
   }
   catch(erro)
