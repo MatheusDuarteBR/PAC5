@@ -1,4 +1,4 @@
-# Projeto de um sistema de adoção de animais para a Frada Joinville.
+# Projeto de um sistema de adoção de animais para a Frada.
 
 ## Pendências ##
 
